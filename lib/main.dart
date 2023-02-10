@@ -8,22 +8,28 @@ void main(List<String> arguments) {
 
   /// For Classes we import a constructor which is used for creating classes.
   ///
-  User myUser =
-      User(); // this is how we instantiate classes by calling constructor.
+  final myUser =
+      User(name: "Nivedita Dutta", photoUrl: "http://www.google.com");
+  ; // this is how we instantiate classes by calling constructor.
   // We can have multiple users too.
-  final myUser2 = User();
+  final myUser2 =
+      User(name: "Saurabh Pandey", photoUrl: "http://www.google.com");
 }
 
 /// First CLASS.
 ///
 class User {
-  String name = 'Saurabh';
+  String name;
   int age = 20;
-  String photoUrl = 'http://google.com/jpg';
+  String photoUrl;
 
-  /// This is a class having 3 fields, fields are basically variables.
-  /// Time: 1hr 57 minutes.
-  /// These fields are intiialised as soon as an object is instantiated.
+  /// Creating a custom constructor here
   ///
-  ///
+  // User(String name, String photoUrl) {
+  //   name = name;
+  //   photoUrl = photoUrl;
+  // }
+  // Shorthand for above is
+  User({required this.name, required this.photoUrl});
+  // Above are the positional parameters.
 }
