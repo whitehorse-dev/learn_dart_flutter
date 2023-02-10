@@ -4,22 +4,31 @@ void main(List<String> arguments) {
   String stringVariable = "Hello WhiteHorse!!";
   print(stringVariable);
 
-  String nullVariable = null; // ERROR
-  nullVariable.length;
-  // THe problem with null is that the devloper doenst get the error rather the
-  // user gets all the errors at run time.
-  // NULL was a billion dollar mistake in programming.
+// OPERATORS.
+  int result, x;
+  result = 5 + 5 - 2;
 
-  // Run time errors are bad and if you can get them at compile time which is
-  // what nullability accomplishes then its best.
-  // This is used in Dart.
+  // truncating divison
+  result = 5 ~/ 5;
+  // THis will remove all decimal places adn give interger.
 
-  String? nullVariable2 = null;
-  // ? this nullablity operator is a safety check whihc signifies that if the
-  // value is null then automatically skip that part rather than crashing the application
+  // Unirary Operatior
+  x = 10;
+  x++;
+  x--;
+  x += 5;
+  x -= 5;
 
-  nullVariable2?.length;
+  // Boolean Operators equal, not equal.
+  bool isEqual = 5 == 10;
+  bool notEqual = 5 != 10;
+  bool greater = 5 >= 10;
 
-  String? nullVariable3;
-  // we donot need to explicitly assign as null beacuse null is the default value.
+  // Concatenate String
+  String concatinatedString = "Hello" + "Saurabh";
+
+  // String Interpolation
+  String interPolatedString = 'Hello Saurabh $greater';
+  // Here we are converting an expression into a string.
+  String longerInterpolation = 'Hello Saurabh ${5 + 10 + 33 / 45}';
 }
