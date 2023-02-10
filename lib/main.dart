@@ -1,52 +1,33 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
   String stringVariable = "Hello WhiteHorse!!";
   print(stringVariable);
-}
 
-/// DART Functions
-/// Speciality is that functions can be passed into other functions.
-/// Even though DART is not a functional programming language and a OOPs based language
-/// still because of functions inside a function it acheives many paradigms.
-///
-/// You can also RETURN Functions from other FUNCTIONS.
-///
+  /// You are going to use the Lists the most!!
+  /// List of int, doubles, Strings etc!!
 
-// int Function(int) // this means int Function is the return type of the function 1hr 7 minutes.
-// then writing the full function as
-int Function(int) twice(int Function(int) f) {
-  // return (int x) {
-  //   return 1;
-  // };
+  // How to use?
+// There is nothing more low level that lists, only use lists.
+  List myList = [1, 2, 3];
+  // currently myList was dynamic type - NEVER HAVE THIS. Always state what type to use
+  List<int> myListNonDynamic = [1, 2, 3];
 
-  /// Now we are going to define an annonymous function too!!
-  /// Anonymous because it doesn't have a name.
-  /// We use anonymmous functions where it is just not imp to return the function whihc
-  /// is just going to be used once!!
+  /// GIVE SMALL int and NOT BIG Int.
+  myListNonDynamic.length;
+  final firstElement = myListNonDynamic[0];
+
+  /// DART SMART
+  /// if we donot write type of variable like below example it will automatically
+  /// generate the required type.
+  ///
+  final myListDartSmart = [1, 2, 3];
+  // Dart automatically takes it as ----- List<int> myListDartSmart -----
+
+  /// Many times specially in UI of Flutter we directly write lists as:
   ///
 
-  /// But because there is already a function as parameter we will have to process it
-  /// more
-  return (int x) {
-    return f(f(x));
-  };
+  <int>[1, 2, 3]; // This is also a valid list.
 }
-
-/// The above function returns int Function and also takes into argument an int Function f!!
-///
-///
-/// TYPE DEF = Defintion easily readable and usable.
-///
-
-typedef IntTransformer = int Function(int);
-
-IntTransformer twiceTyped(IntTransformer f) {
-  return (int x) {
-    return f(f(x));
-  };
-}
-
-/// If you have really long function signature - Type Def comes as a huge savior. 
-/// 
-/// This is the toughest module to understand 
