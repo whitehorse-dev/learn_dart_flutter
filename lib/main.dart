@@ -24,3 +24,9 @@ class Example {
   // IN DART THERE IS NO CLASS PRIVATE FEILDS THERE ARE ONLY PACKAGE PRIVATE FIELDS!!
   //PACKAGE PRIVATE means EACH FILE IN DART IS PACKAGE. So in the same file it can be accessed but not in other files!!
 }
+
+class NonInstantiatable {
+  /// If we make constrcutor private then
+  ///
+  NonInstantiatable._privateConstructor(); // This cannot be called or instance can be created!!
+}
