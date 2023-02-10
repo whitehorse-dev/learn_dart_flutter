@@ -53,4 +53,35 @@ void main(List<String> arguments) {
   /// The Type: void Function(void Function(String))
   /// This accepts any function and returns void. So directly write print to print each element.
   nameListWhereFiltered.forEach(print);
+
+  /// We can also use loops and operators inside collections.
+  /// eg Columns and Rows in the Flutter are made up of lists of widgets.
+  /// These are helpful there.
+  /// how to show logic to show signIn or SignOut button inside a collection?
+  /// We can use a if statement inside the list!!! Special feature of dart!!
+  ///
+  bool isSignedIn = true;
+  <String>[
+    'this is a fake content',
+    'how to show logic to show signIn or SignOut button inside a collection?',
+    if (isSignedIn) 'Sign Out' else 'Sign In',
+  ];
+
+  /// We can have loops inside lists too!!
+  /// We can have a loop running inside a list and add multiple elements to it!!
+  ///
+  final x = <String>[
+    for (int i = 0; i < 10; i++) i.toString(),
+    for (final number in [1, 2, 3, 4, 5]) number.toString(),
+  ];
+  print(x);
+
+  final list1 = ['Hello', 'There'];
+  final list2 = ['What', 'Up'];
+  <String>[
+    ...list1,
+    ...list2,
+  ];
+
+  /// Concatenate Strings - List 1 and 2 using Spread Operator. ... 3 dots.
 }
