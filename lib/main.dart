@@ -8,17 +8,24 @@ void main(List<String> arguments) {
 
   /// For Classes we import a constructor which is used for creating classes.
   ///
-  final myUser =
-      User(name: "Nivedita Dutta", photoUrl: "http://www.google.com");
+  final myUser = User(
+      firstName: "Nivedita",
+      lastName: " Dutta",
+      photoUrl: "http://www.google.com");
   ; // this is how we instantiate classes by calling constructor.
   // We can have multiple users too.
-  final myUser2 =
-      User(name: "Saurabh Pandey", photoUrl: "http://www.google.com");
+  final myUser2 = User(
+      firstName: "Saurabh",
+      lastName: "Pandey",
+      photoUrl: "http://www.google.com");
 }
 
 /// First CLASS.
 ///
 class User {
+  //  late String name; // Using late fields means we will initialize it later on.
+  // Still better than nullables. Use late sparingly.
+
   String name;
   int age = 20;
   String photoUrl;
@@ -30,6 +37,15 @@ class User {
   //   photoUrl = photoUrl;
   // }
   // Shorthand for above is
-  User({required this.name, required this.photoUrl});
+  User(
+      {required String firstName,
+      required String lastName,
+      required this.photoUrl})
+      : name = '$firstName + $lastName';
+// This is how you do in dart when it comes to initializing fields.
+
   // Above are the positional parameters.
+  // Suppose that user is providing first name and last name but we only have name field
+  // so in that case we will have to concatenate
+  /// Normally the constructors donot have a body, so not a good practice.
 }
