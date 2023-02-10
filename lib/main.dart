@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
-  final x = Example(5, 2);
-  x._private; // this is avalaible here no problem.
+  User x = User(firstName: "Saurabh", lastName: "Pandey");
+  x.fullName;
+  x.getFullName();
+
+  // first FullName is much better and lightweight.
+  x.fullName; // this is indistingusable from below one!! regular field.
+  x.lastName;
 }
 
-// using private fields instead of public
-class Example {
-  int publicField;
-  int _private; // underscore means private!!
+class User {
+  final String firstName;
+  final String lastName;
 
-  Example(this.publicField, this._private);
-  // multiple constructors in the classes.
+  User({required this.firstName, required this.lastName});
 
-  // Named parameters cannot be private.
-  Example.namedConstructor(
-      {required this.publicField, required this._private}); // ERROR
-  // Solution is
-  Example.namedConstructor2(
-      {required this.publicField, required int privateParam})
-      : _private = privateParam; // ERROR Solved
+  String getFullName() => '$firstName $lastName';
 
-  // IN DART THERE IS NO CLASS PRIVATE FEILDS THERE ARE ONLY PACKAGE PRIVATE FIELDS!!
-  //PACKAGE PRIVATE means EACH FILE IN DART IS PACKAGE. So in the same file it can be accessed but not in other files!!
-}
-
-class NonInstantiatable {
-  /// If we make constrcutor private then
+  /// According to dart guidelines Methods should perform some actual work and the
+  /// above moethod is acutally not doing anything!!
   ///
-  NonInstantiatable._privateConstructor(); // This cannot be called or instance can be created!!
+  /// Properties are nice methods same as above but they are light weight.
+  ///
+  String get fullName =>
+      '$firstName $lastName'; // VS Code will show it as a property signified by wrench.
+  /// It will be saved like a property and not as a fully blown method.
+  ///
 }
