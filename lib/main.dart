@@ -3,32 +3,30 @@ import 'package:flutter/material.dart';
 void main(List<String> arguments) {
   String stringVariable = "Hello WhiteHorse!!";
   print(stringVariable);
+// Control Flow Constructs
+// Basic building blocks of logic
 
-// OPERATORS.
-  int result, x;
-  result = 5 + 5 - 2;
+  final myInteger = 5;
+  if (myInteger == 10)
+    print("Its 10!!");
+  else
+    print("It is some other Number!! and number is $myInteger");
 
-  // truncating divison
-  result = 5 ~/ 5;
-  // THis will remove all decimal places adn give interger.
+// To restrict using long if else statements we use SWITCH
+  switch (myInteger) {
+    case 10:
+      print(myInteger);
+      break;
+    case 12:
+      print(myInteger);
+      break;
+    case 13:
+      print(myInteger);
+      break;
 
-  // Unirary Operatior
-  x = 10;
-  x++;
-  x--;
-  x += 5;
-  x -= 5;
-
-  // Boolean Operators equal, not equal.
-  bool isEqual = 5 == 10;
-  bool notEqual = 5 != 10;
-  bool greater = 5 >= 10;
-
-  // Concatenate String
-  String concatinatedString = "Hello" + "Saurabh";
-
-  // String Interpolation
-  String interPolatedString = 'Hello Saurabh $greater';
-  // Here we are converting an expression into a string.
-  String longerInterpolation = 'Hello Saurabh ${5 + 10 + 33 / 45}';
+    default:
+      print("Oh its someother integer altogether");
+      break;
+  }
+  // Problem with check is that we can only check equality and not other things.
 }
