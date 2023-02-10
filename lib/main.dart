@@ -8,12 +8,14 @@ void main(List<String> arguments) {
 
   /// For Classes we import a constructor which is used for creating classes.
   ///
-  final myUser =
+  const myUser =
       User(name: "Nivedita Dutta", photoUrl: "http://www.google.com");
   // this is how we instantiate classes by calling constructor.
   // We can have multiple users too.
-  final myUser2 =
+  const myUser2 =
       User(name: "Saurabh Pandey", photoUrl: "http://www.google.com");
+
+  myUser2.hasLongName();
 
   /// These names and photoUrl are mutatbles and can be changed.
   ///
@@ -54,4 +56,11 @@ class User {
   /// object 2 === obj 3 will give true for Const objects.
   ///
   /// Huge Performance benefits.
+  ///
+  ///
+  /// Functions within a Class.
+  ///
+  bool hasLongName() {
+    return name.length > 10;
+  }
 }
