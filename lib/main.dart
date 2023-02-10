@@ -34,3 +34,19 @@ int Function(int) twice(int Function(int) f) {
 }
 
 /// The above function returns int Function and also takes into argument an int Function f!!
+///
+///
+/// TYPE DEF = Defintion easily readable and usable.
+///
+
+typedef IntTransformer = int Function(int);
+
+IntTransformer twiceTyped(IntTransformer f) {
+  return (int x) {
+    return f(f(x));
+  };
+}
+
+/// If you have really long function signature - Type Def comes as a huge savior. 
+/// 
+/// This is the toughest module to understand 
