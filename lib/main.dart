@@ -5,28 +5,26 @@ void main(List<String> arguments) {
   print(stringVariable);
 // Control Flow Constructs
 // Basic building blocks of logic
+// Loops Classics.
+// Usually very less use of loops because mostly we write functions.
 
-  final myInteger = 5;
-  if (myInteger == 10)
-    print("Its 10!!");
-  else
-    print("It is some other Number!! and number is $myInteger");
+  for (int i = 0; i < 10; i++) {
+    print("Value of i $i");
+  } // These loops are for n number of times.
 
-// To restrict using long if else statements we use SWITCH
-  switch (myInteger) {
-    case 10:
-      print(myInteger);
-      break;
-    case 12:
-      print(myInteger);
-      break;
-    case 13:
-      print(myInteger);
-      break;
+  // While loops are imp when you are not sure how many times the loops will move
+  bool condition = true;
+  while (condition) {
+    /// acc to condition change value to true
+    condition = false;
+  } // you are not even going to write many while loops.
+  /// usually we do it with functions only.
 
-    default:
-      print("Oh its someother integer altogether");
-      break;
-  }
-  // Problem with check is that we can only check equality and not other things.
+  /// Another loop which we will never use is DO WHILE LOOP.
+
+  bool doLoop = false;
+  do {
+    print("Do done");
+    doLoop = true;
+  } while (false);
 }
