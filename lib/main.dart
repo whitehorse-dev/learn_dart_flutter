@@ -3,31 +3,24 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
-  String stringVariable = "Hello WhiteHorse!!";
-  print(stringVariable);
+  // MAPS
 
-  /// You are going to use the Lists the most!!
-  /// List of int, doubles, Strings etc!!
-
-  // How to use?
-// There is nothing more low level that lists, only use lists.
-  List myList = [1, 2, 3];
-  // currently myList was dynamic type - NEVER HAVE THIS. Always state what type to use
-  List<int> myListNonDynamic = [1, 2, 3];
-
-  /// GIVE SMALL int and NOT BIG Int.
-  myListNonDynamic.length;
-  final firstElement = myListNonDynamic[0];
-
-  /// DART SMART
-  /// if we donot write type of variable like below example it will automatically
-  /// generate the required type.
-  ///
-  final myListDartSmart = [1, 2, 3];
-  // Dart automatically takes it as ----- List<int> myListDartSmart -----
-
-  /// Many times specially in UI of Flutter we directly write lists as:
+  /// MAPS are used for mapping KEYS to theri VALUES.
+  /// Even in JSONs we have mapping style linkages.
   ///
 
-  <int>[1, 2, 3]; // This is also a valid list.
+  // JSON IN DART is usually represented in
+  /// Map<String, dynamic>
+  /// ie string keys and dynamic values.
+  ///Dynamic values because in the key value pair we can have anything stored.
+
+  Map<String, dynamic> myMap = {
+    'name': "Saurabh",
+    'age': 30,
+    'registered': true,
+  };
+
+  // to get name from the map
+  final name = myMap['name'];
+  print(name);
 }
