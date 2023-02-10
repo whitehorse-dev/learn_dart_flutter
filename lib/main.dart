@@ -8,16 +8,21 @@ void main(List<String> arguments) {
 
   /// For Classes we import a constructor which is used for creating classes.
   ///
-  final myUser = User(
-      firstName: "Nivedita",
-      lastName: " Dutta",
-      photoUrl: "http://www.google.com");
-  ; // this is how we instantiate classes by calling constructor.
+  final myUser =
+      User(name: "Nivedita Dutta", photoUrl: "http://www.google.com");
+  // this is how we instantiate classes by calling constructor.
   // We can have multiple users too.
-  final myUser2 = User(
-      firstName: "Saurabh",
-      lastName: "Pandey",
-      photoUrl: "http://www.google.com");
+  final myUser2 =
+      User(name: "Saurabh Pandey", photoUrl: "http://www.google.com");
+
+  /// These names and photoUrl are mutatbles and can be changed.
+  ///
+  // myUser.name = "SKP";
+  // myUser2.name = "ND";
+
+  /// But there are many instances where you donot want to change name once its instantiated.
+  ///
+  /// We can use FINAL keyword even for the fields.
 }
 
 /// First CLASS.
@@ -26,9 +31,10 @@ class User {
   //  late String name; // Using late fields means we will initialize it later on.
   // Still better than nullables. Use late sparingly.
 
-  String name;
-  int age = 20;
-  String photoUrl;
+  final String name;
+  final String photoUrl;
+
+  // If all the fields are final then we can make the constructor FINAL.
 
   /// Creating a custom constructor here
   ///
@@ -37,15 +43,15 @@ class User {
   //   photoUrl = photoUrl;
   // }
   // Shorthand for above is
-  User(
-      {required String firstName,
-      required String lastName,
-      required this.photoUrl})
-      : name = '$firstName + $lastName';
-// This is how you do in dart when it comes to initializing fields.
+  const User({required this.name, required this.photoUrl});
 
-  // Above are the positional parameters.
-  // Suppose that user is providing first name and last name but we only have name field
-  // so in that case we will have to concatenate
-  /// Normally the constructors donot have a body, so not a good practice.
+  /// Const constructors are called with a const keyworrd and whenever they are called
+  /// you are going to incur slight performance boost.
+  /// CONST keywords are a MUST because it has huge perforance improvement.
+  ///
+  /// In case of flutter we have a SizedBox(width: 8) this is const. So even if we
+  /// use it at 10000 places in the app. It will everytime give the same object.
+  /// object 2 === obj 3 will give true for Const objects.
+  ///
+  /// Huge Performance benefits.
 }
