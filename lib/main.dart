@@ -1,31 +1,26 @@
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
-  String instantiatedString = 'Saurabh'; // here we have instantiated string.
-
-  const myUser =
-      User(name: "Nivedita Dutta", photoUrl: "http://www.google.com");
-
-  const myUser2 =
-      User(name: "Saurabh Pandey", photoUrl: "http://www.google.com");
-
-  myUser2.hasLongName();
+  final x = Example(5, 2);
+  x._private; // this is avalaible here no problem.
 }
 
-class User {
-  final String name;
-  final String photoUrl;
+// using private fields instead of public
+class Example {
+  int publicField;
+  int _private; // underscore means private!!
 
-  const User({required this.name, required this.photoUrl});
+  Example(this.publicField, this._private);
+  // multiple constructors in the classes.
 
-  bool hasLongName() {
-    return name.length > 10;
-  }
+  // Named parameters cannot be private.
+  Example.namedConstructor(
+      {required this.publicField, required this._private}); // ERROR
+  // Solution is
+  Example.namedConstructor2(
+      {required this.publicField, required int privateParam})
+      : _private = privateParam; // ERROR Solved
 
-  /// Using methods directly on the class name.
-  /// We have to use it class wide and not specific to a particular user object.
-  /// This is easy by using STATIC Keyword
-  ///
-  static void myMethod() {}
-  static const minNameLength = 3; // automatic int typecast.
+  // IN DART THERE IS NO CLASS PRIVATE FEILDS THERE ARE ONLY PACKAGE PRIVATE FIELDS!!
+  //PACKAGE PRIVATE means EACH FILE IN DART IS PACKAGE. So in the same file it can be accessed but not in other files!!
 }
