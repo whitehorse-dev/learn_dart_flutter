@@ -1,26 +1,22 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
-  // MAPS
+  // Sets
 
-  /// MAPS are used for mapping KEYS to theri VALUES.
-  /// Even in JSONs we have mapping style linkages.
+  /// Sets are just like maps but the donot have key value pairs rather only values
+  /// Values are put in curly braces just like Maps.
+  /// Set can only contain one instance of a particular value.   ie if we have
+  /// 2 1, 1 then duplicates will get ignored as we have only unique values in a set.
+  ///
   ///
 
-  // JSON IN DART is usually represented in
-  /// Map<String, dynamic>
-  /// ie string keys and dynamic values.
-  ///Dynamic values because in the key value pair we can have anything stored.
+  Set<int> mySet = {1, 2, 3, 3, 3};
+  print(mySet.length);
 
   Map<String, dynamic> myMap = {
     'name': "Saurabh",
     'age': 30,
     'registered': true,
+    'address': 'Delhi',
   };
-
-  // to get name from the map
-  final name = myMap['name'];
-  print(name);
 }
