@@ -25,6 +25,11 @@ void main(List<String> arguments) {
   /// There is a way to surpass and access the private field of admin user
   ///
   if (adminAsUser is AdminUser) print(adminAsUser.specialAdminField);
+
+  final factoryAdmin = User.adminUser(false);
+  print(factoryAdmin);
+
+  /// Factories are quite useful for some of the libraries we will be using later on.
 }
 
 class User {
