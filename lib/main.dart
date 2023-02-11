@@ -32,7 +32,15 @@ void main(List<String> arguments) {
   /// Factories are quite useful for some of the libraries we will be using later on.
 }
 
-class User {
+/// Sometimes we only want to extend a class and not instantiate is
+///
+/// Use ABSTRACT keyword.
+/// Now the class will be prevented from being instantiated.
+/// It can have fields, constructors, methods but can only be used in a subclass
+/// and not directly.
+///
+/// When a class is abstract it doesnt need to provide implementation of its methods.
+abstract class User {
   final String _firstName;
   final String _lastName;
 
@@ -60,9 +68,21 @@ class User {
     if (admin) {
       return AdminUser(specialAdminField: 123, firstName: 'a', lastName: 'bb');
     } else {
-      return User('a', 'bb');
+      return User('a', 'bb'); // Got the error because of abstract class User.
     }
   }
+
+  void
+      myMethod(); // We will automatically get error on the extending classes to
+  // implement this method.
+
+  /// Concerete classes absolutely needs to have implementiton while the
+  /// abstract classes donot need to have implementaion.
+  ///
+  /// Same goes for the property too.
+  ///
+  int get myProperty;
+  // again asked to implement it.
 }
 
 class AdminUser extends User {
@@ -93,4 +113,14 @@ class AdminUser extends User {
     /// @mustCallSuper
     /// We need to add that package.
   }
+
+  @override
+  void myMethod() {
+    // TODO: implement myMethod
+  }
+
+  @override
+  // TODO: implement myProperty
+  int get myProperty =>
+      throw UnimplementedError(); // this will surely make app crash.
 }
