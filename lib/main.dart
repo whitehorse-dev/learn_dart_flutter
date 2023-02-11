@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
@@ -36,6 +37,26 @@ class User {
 
   void signOut() {
     print('Signing Out.');
+  }
+
+// Special care to be taken while naming the factory, class name must start with small letter.
+  // factory User.adminUser() {
+  //   return AdminUser(specialAdminField: 123, firstName: 'a', lastName: 'bb');
+  // }
+
+  /// This is used because constructors always returns the instance of the same class
+  /// but factory can be used to return instance of child class of super class. ie
+  /// we can return AdminUser from User Class object.
+  ///
+  /// We can have some logic inside and return accordingly.
+  ///
+  /// Factory is also written SMALL factory.
+  factory User.adminUser(bool admin) {
+    if (admin) {
+      return AdminUser(specialAdminField: 123, firstName: 'a', lastName: 'bb');
+    } else {
+      return User('a', 'bb');
+    }
   }
 }
 
