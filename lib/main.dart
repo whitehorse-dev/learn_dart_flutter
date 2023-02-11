@@ -9,9 +9,13 @@ import 'package:flutter/foundation.dart';
 part 'main.freezed.dart';
 // optional: Since our Person class is serializable, we must add this line.
 // But if Person was not serializable, we could skip it.
-part 'main.g.dart';
+// part 'main.g.dart';
 
 void main(List<String> arguments) {
+  final person1 = Person(firstName: "Saurabh", lastName: 'Pandey', age: 22);
+  final person2 = person1.copyWith(age: 23);
+  print(person2);
+
   /// Using Freezed pub.dev to automatic update the data class whenever there is any changes to it.
   ///
 }
