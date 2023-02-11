@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
@@ -30,6 +31,9 @@ void main(List<String> arguments) {
   /// Objects are not the same even though they hold the same data if constructors are
   /// not const.
   ///
+  ///Many times we compare values instead of references.
+  ///
+  ///This is totally possible when we override the equality.
 }
 
 class User {
@@ -42,4 +46,17 @@ class User {
   });
 
   // Objects constructed with const constructors are always same.
+
+  @override
+  bool operator ==(covariant User other) {
+    if (identical(this, other)) return true;
+
+    return other.firstName == firstName && other.lastName == lastName;
+  }
+  // we have overridded teh behavior of equality operator.
+
+  @override
+  int get hashCode => firstName.hashCode ^ lastName.hashCode;
+
+  // Hashcodes are used
 }
