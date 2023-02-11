@@ -3,59 +3,21 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
-  // Mixins are similar to classes but to avoid multiple inheritance it can be used.
-  /// It uses with.... WITH
-  ///
-  ///
-  /// class x with ElevatedClient {}
-  ///
-  /// This is what Mixin does 3:16 minutes.
-  ///   You can think of Mixins as copyign a method adn pasting it
-  /// but it makes it pasting multiple times not required.
-  ///
-  /// It copies and pastes the members of mixins.
-  ///
-  var dog = Dog();
-  dog.breathe();
-  dog.bark();
-
-  var snake = Snake();
-  snake.display();
+  final x = 'Saurabh'.duplicate();
+  print(x);
 }
 
-// Creating a Bark mixin
-mixin Bark {
-  void bark() => print('Barking');
-}
-
-mixin Fly {
-  void fly() => print('Flying');
-}
-
-mixin Crawl {
-  void crawl() => print('Crawling');
-}
-
-// Creating an Animal class
-class Animal {
-  void breathe() {
-    print("Breathing");
-  }
-}
-
-// Createing a Dog class, which extends the Animal class
-// Bark is the mixin with the method that Dog can implement
-class Dog extends Animal with Bark {}
-
-// Creating a Bat class Bat, which extends the Animal class
-// Fly is the mixin with the method that Bat can implement
-class Bat extends Animal with Fly {}
-
-class Snake extends Animal with Crawl {
-  // Invoking the methods within the display
-  void display() {
-    print(".....Snake.....");
-    breathe();
-    crawl();
+/// Eg String is a built in type and we cannot edit code for String.
+/// however we can press F12 to go to definition of String.
+///
+/// How to add a method to a string to make our lives easier??
+///
+/// Like we donot have a string.duplicate() method to duplicate a string.
+///
+/// EXTENSION.
+///
+extension StringDuplication on String {
+  String duplicate() {
+    return this + this;
   }
 }
