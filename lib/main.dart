@@ -3,124 +3,78 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
-  final adminSaurabh =
-      AdminUser(specialAdminField: 1, firstName: 'Saurabh', lastName: 'Pandey');
-  // adminSaurabh.signOut();
-  // print(adminSaurabh.fullName);
-
-  // adminSaurabh.signOut();
-
-  final adminAsUser = adminSaurabh as User;
-  // adminAsUser.specialAdminField; // Not even showing up... error.
-
-  /// now we can no longer access the admin specific fields on the adminAsUser.
-  /// eg. specialAdminField
-  ///
-  /// But even now the full name is working properly!!
-  ///
-  print(adminAsUser.fullName);
-  print(adminAsUser is AdminUser);
-  print(adminAsUser is! AdminUser);
-
-  /// There is a way to surpass and access the private field of admin user
-  ///
-  if (adminAsUser is AdminUser) print(adminAsUser.specialAdminField);
-
-  final factoryAdmin = User.adminUser(false);
-  print(factoryAdmin);
-
-  /// Factories are quite useful for some of the libraries we will be using later on.
+  ImplementingClass() as RandomClass;
 }
 
-/// Sometimes we only want to extend a class and not instantiate is
+// In Kotlin, Java, typescript have INTERFACE
+// C and Objective C has protocols
+
+/// DART HAS IMPLICIT INTERFACES.
+/// we can implement any kind of class as an interface.
+/// Interface basically means properties and methods of the class without
+/// their implementation.
 ///
-/// Use ABSTRACT keyword.
-/// Now the class will be prevented from being instantiated.
-/// It can have fields, constructors, methods but can only be used in a subclass
-/// and not directly.
+/// Nothing gets copied when we implement a class ie use interace.
+/// We have to give all definitons again newly.
 ///
-/// When a class is abstract it doesnt need to provide implementation of its methods.
-abstract class User {
-  final String _firstName;
-  final String _lastName;
+/// We need to provide our own new implementation.
+///
+///
 
-  User(this._firstName, this._lastName);
+class RandomClass {
+  String a;
+  String b;
+  RandomClass({
+    required this.a,
+    required this.b,
+  });
 
-  String get fullName => '$_firstName $_lastName';
+  String get ab => '$a $b';
 
-  void signOut() {
-    print('Signing Out.');
+  void printValue() {
+    print('Printed Value');
   }
-
-// Special care to be taken while naming the factory, class name must start with small letter.
-  // factory User.adminUser() {
-  //   return AdminUser(specialAdminField: 123, firstName: 'a', lastName: 'bb');
-  // }
-
-  /// This is used because constructors always returns the instance of the same class
-  /// but factory can be used to return instance of child class of super class. ie
-  /// we can return AdminUser from User Class object.
-  ///
-  /// We can have some logic inside and return accordingly.
-  ///
-  /// Factory is also written SMALL factory.
-  factory User.adminUser(bool admin) {
-    if (admin) {
-      return AdminUser(specialAdminField: 123, firstName: 'a', lastName: 'bb');
-    } else {
-      return User('a', 'bb'); // Got the error because of abstract class User.
-    }
-  }
-
-  void
-      myMethod(); // We will automatically get error on the extending classes to
-  // implement this method.
-
-  /// Concerete classes absolutely needs to have implementiton while the
-  /// abstract classes donot need to have implementaion.
-  ///
-  /// Same goes for the property too.
-  ///
-  int get myProperty;
-  // again asked to implement it.
 }
 
-class AdminUser extends User {
-  final double specialAdminField;
-
-  AdminUser(
-      {required this.specialAdminField,
-      required String firstName,
-      required String lastName})
-      : super(firstName, lastName);
+class ImplementingClass implements RandomClass {
+  // This will automatically copy all methods and properties and
+  // force you to write implementation again.
+  @override
+  String a;
 
   @override
-  String get fullName => '${super.fullName} is $specialAdminField';
-  // we must add overrise annotation, even though it works w/o override.
+  String b;
 
   @override
-  void signOut() {
-    print('${super.fullName} is Signed Out Successfully');
-    // @##OR ERROR
-    /// Never remove the super.method from the implementaion because it might be having some
-    /// code which is necessary.
-    ///
-    super.signOut();
+  // TODO: implement ab
+  String get ab => throw UnimplementedError();
 
-    /// Normally this annotation is in other langauges but not built into the dart library and it is
-    /// called - META - Must Call Super.
-    /// This will have to be called on that method
-    /// @mustCallSuper
-    /// We need to add that package.
+  @override
+  void printValue() {
+    // TODO: implement printValue
   }
+}
 
+/// Care must be taken that UNLESS YOU HAVE A VERY GOOD REASON TO DO SO
+/// Like in test classes. you should only implement abstract classes and not regular
+/// classes.
+///
+///
+/// eg
+///
+abstract class DataReader {
+  dynamic ReadData();
+  // We are returning dynamic here because there cna be multiple data readers like
+  /// int data reader, StringDataReader etc...
+  ///
+  /// As Dynamic is not good to use we can use Generic Types.
+}
+
+class PopulationDataReader implements DataReader {
   @override
-  void myMethod() {
-    // TODO: implement myMethod
+  // ALWAYS write return type as a good measure.
+  dynamic ReadData() {
+    print('Yeah!! I am reading the population data');
+    return 'aksldc';
   }
-
-  @override
-  // TODO: implement myProperty
-  int get myProperty =>
-      throw UnimplementedError(); // this will surely make app crash.
 }
