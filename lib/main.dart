@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 void main(List<String> arguments) {
   final x = 'Saurabh'.duplicate();
   print(x);
+
+  final y = "Nivedita".duplicated;
+  print(y);
 }
 
 /// Eg String is a built in type and we cannot edit code for String.
@@ -20,4 +23,11 @@ extension StringDuplication on String {
   String duplicate() {
     return this + this;
   }
+
+  // get methods donot need () rather directly braces. These are not methods/funcitons.
+  String get duplicated {
+    return this + this;
+  }
 }
+
+/// We can also create properties. 
