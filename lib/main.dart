@@ -11,13 +11,14 @@ void main(List<String> arguments) {
   ///
   /// Instead of modifying directly saurabh's age we now take a different person.
   ///
-  final updatedSaurabh = Person(age: saurabh.age + 1, name: saurabh.name);
+  final updatedSaurabh = saurabh.copyWith(age: saurabh.age + 1);
 
   /// The updatedSaurabh is a copy of the earlier Saurabh with new age.
   ///
   /// MUTABLE - when you can directly assign the value then its mutable.
   ///
   /// IMMUTABLE - when you can't directly assign and go via other way.
+  ///
 }
 
 @immutable // This means the class has only final fields and doesnt update values
@@ -28,8 +29,11 @@ class Person {
     required this.name,
     required this.age,
   });
+
+  Person copyWith({String? name, int? age}) {
+    return Person(name: name ?? this.name, age: age ?? this.age);
+  }
 }
 
-
 /// The above way is not a good way because its a long way and copies the person
-/// values and its long to write. 
+/// values and its long to write.
