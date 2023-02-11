@@ -59,6 +59,10 @@ class User {
     }
   }
 
+  String get email =>
+      _email ?? 'Not a valid email'; //?? this is coalesing operator
+  /// Work is to check if the previous value is null then automatically send next set error info.
+
   /// we pass values into set properties
   /// we get values out of get properties like get Fullname was string.
 }
