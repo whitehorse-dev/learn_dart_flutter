@@ -5,9 +5,25 @@ void main(List<String> arguments) {
   final adminSaurabh =
       AdminUser(specialAdminField: 1, firstName: 'Saurabh', lastName: 'Pandey');
   // adminSaurabh.signOut();
-  print(adminSaurabh.fullName);
+  // print(adminSaurabh.fullName);
 
-  adminSaurabh.signOut();
+  // adminSaurabh.signOut();
+
+  final adminAsUser = adminSaurabh as User;
+  // adminAsUser.specialAdminField; // Not even showing up... error.
+
+  /// now we can no longer access the admin specific fields on the adminAsUser.
+  /// eg. specialAdminField
+  ///
+  /// But even now the full name is working properly!!
+  ///
+  print(adminAsUser.fullName);
+  print(adminAsUser is AdminUser);
+  print(adminAsUser is! AdminUser);
+
+  /// There is a way to surpass and access the private field of admin user
+  ///
+  if (adminAsUser is AdminUser) print(adminAsUser.specialAdminField);
 }
 
 class User {
