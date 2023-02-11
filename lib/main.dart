@@ -2,15 +2,15 @@
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
-  User x = const User(firstName: "Saurabh", lastName: "Pandey");
+  // User x = const User(firstName: "Saurabh", lastName: "Pandey");
 
-  User x2 = User(firstName: "Saurabh", lastName: "Pandey");
+  // User x2 = User(firstName: "Saurabh", lastName: "Pandey");
 
-  User x3 = User(firstName: "Saurabh", lastName: "Pandey");
+  // User x3 = User(firstName: "Saurabh", lastName: "Pandey");
 
   /// Here all the users x1, x2 and x3 are same. Refers to the same value.
   ///
-  print(x2 == x3);
+  // print(x2 == x3);
   // Becuase they are instanciated with same cannonical instances.
 
   // But when we change the value of one of the parameter then the value changes.
@@ -37,26 +37,24 @@ void main(List<String> arguments) {
 }
 
 class User {
-  final String firstName;
-  final String lastName;
+  final String _firstName;
+  final String _lastName;
 
-  const User({
-    required this.firstName,
-    required this.lastName,
-  });
+  User(this._firstName, this._lastName);
 
-  // Objects constructed with const constructors are always same.
+  String get fullName => '$_firstName $_lastName';
 
-  @override
-  bool operator ==(covariant User other) {
-    if (identical(this, other)) return true;
-
-    return other.firstName == firstName && other.lastName == lastName;
+  void SignOut() {
+    print('Signing Out.');
   }
-  // we have overridded teh behavior of equality operator.
+}
 
-  @override
-  int get hashCode => firstName.hashCode ^ lastName.hashCode;
+class AdminUser extends User {
+  final double specialAdminField;
 
-  // Hashcodes are used
+  AdminUser(
+      {required this.specialAdminField,
+      required String firstName,
+      required String lastName})
+      : super(firstName, lastName);
 }
