@@ -62,19 +62,31 @@ class ImplementingClass implements RandomClass {
 ///
 /// eg
 ///
-abstract class DataReader {
-  dynamic ReadData();
+abstract class DataReader<T> {
+  T ReadData();
   // We are returning dynamic here because there cna be multiple data readers like
   /// int data reader, StringDataReader etc...
   ///
   /// As Dynamic is not good to use we can use Generic Types.
 }
 
-class PopulationDataReader implements DataReader {
+class IntegerDataReader implements DataReader<int> {
   @override
   // ALWAYS write return type as a good measure.
-  dynamic ReadData() {
+  int ReadData() {
     print('Yeah!! I am reading the population data');
-    return 'aksldc';
+    return 12345;
   }
 }
+
+class StringDataReader implements DataReader<String> {
+  @override
+  String ReadData() {
+    // TODO: implement ReadData
+    return 'String Returned';
+  }
+}
+
+
+/// All these use the same class but has different generic data types. 
+/// DART DOESNT Support multiple INHERITANCE!!! GREAT THING!! 
