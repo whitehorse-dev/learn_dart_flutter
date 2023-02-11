@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
-  User x = User(firstName: "Saurabh", lastName: "Pandey");
+  User x = User(firstName: "Saurabh", lastName: "Pandey", email: 's@k.com');
   x.fullName;
-  x.getFullName();
 
   // first FullName is much better and lightweight.
   x.fullName; // this is indistingusable from below one!! regular field.
@@ -16,7 +15,7 @@ void main(List<String> arguments) {
   x.setEmail('saurabh');
 
   // Using set Property - better usage and this is how it should be done.
-  x.emailSet = 'saurabh@gmail.com';
+  x.email = 'saurabh@gmail.com';
 }
 
 class User {
@@ -24,7 +23,13 @@ class User {
   final String lastName;
   String? _email;
 
-  User({required this.firstName, required this.lastName});
+  User(
+      {required this.firstName,
+      required this.lastName,
+      required String email}) {
+    this._email =
+        email; // This will automatically check with the setting property
+  }
 
   /// According to dart guidelines Methods should perform some actual work and the
   /// above moethod is acutally not doing anything!!
@@ -46,7 +51,7 @@ class User {
 
   // Instead of above method we can also create a property like
 
-  set emailSet(String value) {
+  set email(String value) {
     if (value.contains('@')) {
       _email = value;
     } else {
